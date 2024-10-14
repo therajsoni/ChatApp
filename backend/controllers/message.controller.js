@@ -3,8 +3,8 @@ import { Conversation } from "../models/conversationModel.js";
 
 export const sendMessage = async(req,res) => {
     try {
-        const senderId = req.id;
-        const receiverId = req.params.id;
+        const senderId = req.id; //doubt
+        const receiverId = req.params.id; //url 
         const {message} = req.body;
         // make converation
         let getConversation = await Conversation.findOne({
@@ -26,9 +26,9 @@ export const sendMessage = async(req,res) => {
         //SOCKET IO
 
 
+        
 
-                
-    
+
         res.status(201).json({
             message : message,
             success : true
