@@ -79,6 +79,16 @@ export const login = async(req,res) => {
 
         const token = await jwt.sign(tokenData,process.env.JWT_SECRET_KEY,{expiresIn:'1d'});
 
+        // jwt.verify(TOKEN,process.env.JWT_SECRET_KEY,(err,decoded)=>{
+        // if(err)log(err)
+        // return decoded
+        // })
+
+        // refreshToken = jwt.sign(tokenData,process.env.JWT_REFRESHJWT_KEY,{expiresIn:'100y'})
+        // jwt.verify(refreshToken,process.env.JWT_REFRESHJWT_KEY,(err,decoded)=>{
+        // 
+        // })
+
         return res.status(201).cookie("token",token ,{maxAge  : 1*24*60*60*1000 , httpOnly : true , sameSIte : 'strict' }).json({
            _id : user._id, // 
            username : user.username,

@@ -1,16 +1,15 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import HomePage from './components/HomePage'
 import Signup from './components/Signup'
 import Login from './components/Login'
-
+import HomePage from './components/HomePage'
 const router = createBrowserRouter([
   {
     path : '/',
     element : <HomePage/>
   },
   {
-    path : '/register',
+    path : '/signup',
     element : <Signup/>
   },
   {
@@ -19,12 +18,10 @@ const router = createBrowserRouter([
   }
 ])
 
-const App = () => {
+export default function App() {
   return (
-    <div className='p-4 h-screen flex items-center justify-center'>
-    <RouterProvider router={router}/>
+    <div>
+     <RouterProvider router={router}></RouterProvider>
     </div>
   )
 }
-
-export default App
