@@ -60,9 +60,9 @@ const login = async (req, res) => {
             message: 'Incorrect password'
         });
     }
-    const token = jwt.sign({ id: user._id, name: user.name }, secretKey, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id, name: user.name }, secretKey, { expiresIn: '1h' }); // here is expire time 
     console.log(token);    
-    const refreshToken = jwt.sign({id : user._id,name : user.name},secretKey);
+    const refreshToken = jwt.sign({id : user._id,name : user.name},secretKey); // no expire time here 
     console.log(refreshToken);    
 
     return res.cookie('token', token, { httpOnly: true }).cookie('refreshtoken',refreshToken,{httpOnly : true}).json({

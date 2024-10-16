@@ -23,7 +23,9 @@ const useGetOtherUsers = () => {
     fetchOtherUsers();
   }, []);
 
-  return <div></div>;
+  return <div>
+    
+  </div>;
 };
 
 export default useGetOtherUsers;

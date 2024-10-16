@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import OtherUsers from './OtherUsers';
 import { useSelector,useDispatch } from 'react-redux';
-import { setOtherUsers } from '../redux/userSlice/Userslice';
+import { setAuthUser, setOtherUsers } from '../redux/userSlice/Userslice';
 import toast from 'react-hot-toast';
 
 const Sidebar = () => {
@@ -16,6 +16,7 @@ const Sidebar = () => {
       })
       if(res?.ok){
         console.log('ok');
+        dispatch(setAuthUser(null))
       }   
       else{
         console.log('not ok');        
