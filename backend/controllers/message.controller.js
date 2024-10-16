@@ -30,8 +30,7 @@ export const sendMessage = async(req,res) => {
 
 
         res.status(201).json({
-            message : message,
-            success : true
+           newMessage
         })
 
     } catch (error) {

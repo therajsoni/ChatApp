@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setAuthUser } from '../redux/Slice/userSlice';
+import { Link, useNavigate } from 'react-router-dom';
+import { setAuthUser } from '../redux/userSlice/Userslice';
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch()
+  const [user,setuser] = useState([])
 
-
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const Login = () => {
             text : "green"
         }
       }) 
-   console.log({ username, password });
+  
     try {
         
 
@@ -41,11 +43,13 @@ const Login = () => {
         toast.dismiss(loading)
         toast.success("login",{
             duration : 3000,
-        })    
-        dispatch(setAuthUser(res.json()))        
+        })          
         // }, 3000);
-        console.log(res.json());
-    }    
+       
+        const data = await res.json();     
+           
+        dispatch(setAuthUser(data))
+           }    
     else{
         // setTimeout(() => {
             toast.dismiss(loading)
@@ -64,6 +68,8 @@ const Login = () => {
 }
     setUsername('');setPassword('');
   };
+
+  console.log(user);  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
